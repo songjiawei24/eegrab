@@ -1,0 +1,36 @@
+{
+  "name": "eegrab",
+  "version": "1.0.0",
+  "description": "Grab data from CIC EE results",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/songjiawei24/eegrab.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "d3",
+    "cic",
+    "ee"
+  ],
+  "author": "Jiawei Song",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/songjiawei24/eegrab/issues"
+  },
+  "homepage": "https://github.com/songjiawei24/eegrab#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "cheerio": "^0.20.0",
+    "d3-tip": "^0.6.7",
+    "express": "^4.13.4",
+    "json-format": "^0.1.2",
+    "prettyjson": "^1.1.3",
+    "q": "^1.4.1",
+    "request": "^2.70.0"
+  }
+}
