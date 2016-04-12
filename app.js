@@ -2,6 +2,7 @@
 var express = require('express');
 var app = express();
 /* file sys */
+app.set('port', (process.env.PORT || 5000));
 var fs = require('fs');
 /* get lastest date from website */
 var getData = require("./myModules/getdata.js");
@@ -32,6 +33,6 @@ app.get('/api/data', function (req, res) {
     
 });
 
-app.listen(4000, function () {
-    console.log('Example app listening on port 4000!');
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
