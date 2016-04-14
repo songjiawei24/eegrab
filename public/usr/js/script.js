@@ -27,7 +27,7 @@ var yAxis2 = d3.svg.axis() // y for num
     .scale(y2)
     .orient("right");
 
-var tip = d3.tip() // tool tip for num
+var tipNum = d3.tip() // tool tip for num
     .attr('class', 'd3-tip')
     .offset([-10, 0])
     .html(function(d) {
@@ -35,6 +35,15 @@ var tip = d3.tip() // tool tip for num
         var invited = "<strong>Number invited:</strong> <span>" + d.num + "</span><br />";
         var score = "<strong>Score:</strong> <span>" + d.score + "</span><br />";
         return invited + score + date;
+    })
+var tipScore = d3.tip() // tool tip for num
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+        var date = "<strong>Date:</strong> <span>" + d.date + "</span>";
+        var invited = "<strong>Number invited:</strong> <span>" + d.num + "</span><br />";
+        var score = "<strong>Score:</strong> <span>" + d.score + "</span><br />";
+        return score + invited + date;
     })
 
 var line1 = d3.svg.line() // make line follow score y
@@ -51,7 +60,8 @@ var svg = d3.select(".chart-container").append("svg")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svg.call(tip);
+svg.call(tipNum);
+svg.call(tipScore);
 
 d3.json("data.json", function(error, data) {
     if (error) throw error;
@@ -105,8 +115,8 @@ d3.json("data.json", function(error, data) {
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y2(d.num); })
         .attr("height", function(d) { return height - y2(d.num); })
-        .on('mouseover', tip.show)
-        .on('mouseout', tip.hide);
+        .on('mouseover', tipNum.show)
+        .on('mouseout', tipNum.hide);
 
     svg.append("path") // line for score
         .datum(data)
@@ -124,7 +134,9 @@ d3.json("data.json", function(error, data) {
         .data(data)
         .enter().append("circle")
         .attr("class", "dot")
-        .attr("r", 1)
+        .attr("r", 2)
         .attr("cx", function(d) { return x(d.round) + x(1); })
-        .attr("cy", function(d) { return y1(d.score); });
+        .attr("cy", function(d) { return y1(d.score); })
+        .on('mouseover', tipScore.show)
+        .on('mouseout', tipScore.hide);;
 });

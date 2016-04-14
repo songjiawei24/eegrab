@@ -55,3 +55,7 @@
   stroke: steelblue;
   stroke-width: 3px;
 }
+
+.dot:hover {
+    color:white;
+}
