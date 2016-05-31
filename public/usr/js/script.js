@@ -120,7 +120,7 @@ d3.json("data.json", function(error, data) {
 
     svg.append("path") // line for score
         .datum(data)
-        .attr("transform", "translate(" + x(1) + ",0)")
+        .attr("transform", "translate(" + (x(2)-x(1))/2 + ",0)")
         .attr("class", "line")
         .attr("d", line1);
         
@@ -135,7 +135,7 @@ d3.json("data.json", function(error, data) {
         .enter().append("circle")
         .attr("class", "dot")
         .attr("r", 2)
-        .attr("cx", function(d) { return x(d.round) + x(1); })
+        .attr("cx", function(d) { return x(d.round) + (x(2)-x(1))/2; })
         .attr("cy", function(d) { return y1(d.score); })
         .on('mouseover', tipScore.show)
         .on('mouseout', tipScore.hide);;
