@@ -17,7 +17,7 @@ module.exports = {
                 var res = parser.parse(source);
                 //console.log(res);
                 
-                fs.writeFile(__dirname + "/../public/test.json", JSON.stringify(res), function(err) {
+                fs.writeFile(__dirname + "/../public/data.json", JSON.stringify(res), function(err) {
                     if(err) {
                         return console.log(err);
                     }
